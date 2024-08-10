@@ -6,7 +6,7 @@ import User from "../models/User";
 const router = Router();
 
 // Inscription
-router.post("/register", async (req, res) => {
+router.get("/register", async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
