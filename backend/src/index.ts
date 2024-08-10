@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import userRoutes from "./routes/userRoutes";
+import moduleRoutes from "./routes/moduleRoutes";
+import forumRoutes from "./routes/forumRoutes";
+import notificationRoutes from "./routes/notificationRoutes";
+
 // user : danielashe123
 // pwd : DUCXlmAk8P1oUc9v
 
@@ -30,6 +35,11 @@ mongoose
     console.error("Failed to connect to MongoDB", err);
     process.exit(1); // Exit the process with failure
   });
+
+app.use("/api/users", userRoutes);
+app.use("/api/modules", moduleRoutes);
+app.use("/api/forums", forumRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
